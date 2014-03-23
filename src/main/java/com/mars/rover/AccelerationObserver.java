@@ -1,10 +1,8 @@
 package com.mars.rover;
 
 
-public class AccelerationObserver {
+public interface AccelerationObserver {
 
-    public void handle_acceleration_report(int acceleration) {
-	    
-    }
+    public void handle_acceleration_report(int acceleration);
 	
 }
