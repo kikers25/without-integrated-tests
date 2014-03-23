@@ -1,8 +1,10 @@
 package com.mars.rover;
 
 
-public interface Lander {
+public class Lander {
 
-    void decelerate();
+    public void decelerate(){
+    	
+    }
 	
 }
