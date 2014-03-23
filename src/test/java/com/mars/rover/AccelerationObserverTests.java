@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 
-public abstract class AccelerationObserverTests {
+public abstract class AccelerationObserverTests extends TestsWithMokingClasses {
 
 	@Test
     public void testAccelerationObserverCanHandleRapidAcceleration() throws Exception {

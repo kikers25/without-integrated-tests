@@ -12,5 +12,9 @@ public class Parachute {
     public void open() {
     	lander.decelerate();
     }
+
+    public void detach() {
+	    
+    }
 	
 }
