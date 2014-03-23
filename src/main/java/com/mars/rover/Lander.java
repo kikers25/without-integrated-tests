@@ -3,8 +3,14 @@ package com.mars.rover;
 
 public class Lander {
 
-    public void decelerate(){
-    	
+    private Accelerometer accelerometer;
+
+	public Lander(Accelerometer accelerometer, Altimeter altimeter) {
+    	this.accelerometer = accelerometer;
+    }
+
+	public void decelerate(){
+		accelerometer.report_acceleration(-50);
     }
 	
 }
