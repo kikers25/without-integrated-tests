@@ -3,11 +3,14 @@ package com.mars.rover;
 
 public class DetachmentSystem implements AccelerationObserver {
 
-    public DetachmentSystem(Parachute parachute) {
+    private Parachute parachute;
+
+	public DetachmentSystem(Parachute parachute) {
+		this.parachute = parachute;
     }
 
     public void handle_acceleration_report(int acceleration) {
-	    
+	    parachute.detach();
     }
 	
 }

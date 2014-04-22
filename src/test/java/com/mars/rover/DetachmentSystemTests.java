@@ -7,7 +7,7 @@ import org.jmock.auto.Mock;
 public class DetachmentSystemTests extends AccelerationObserverTests {
 	
 	@Mock
-	Parachute parachute;
+	private Parachute parachute;
 
     @Override
     protected AccelerationObserver create_acceleration_observer() {
