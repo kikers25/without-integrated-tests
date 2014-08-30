@@ -12,8 +12,8 @@ public class Lander {
 		accelerometer.report_acceleration(-50);
 	}
 
-	public void has_landed() {
-
+	public boolean has_landed() {
+		return false;
 	}
 
 }
