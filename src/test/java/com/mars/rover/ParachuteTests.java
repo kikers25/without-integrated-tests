@@ -57,4 +57,22 @@ public class ParachuteTests extends TestsWithMokingClasses {
 		}
 	}
 
+	@Test
+	public void //
+	testOpenParachuteRespondsToFailure() throws Exception {
+		Parachute parachute = new Parachute(lander);
+		context.checking(new Expectations() {
+			{
+				allowing(lander).decelerate();
+				will(throwException(new Exception()));
+			}
+		});
+
+		try {
+			parachute.open();
+			fail("No threw exception");
+		} catch (Exception e) {
+		}
+	}
+
 }
