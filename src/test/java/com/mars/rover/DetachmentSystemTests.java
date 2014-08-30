@@ -4,6 +4,7 @@ import static org.junit.Assert.fail;
 
 import org.jmock.Expectations;
 import org.jmock.auto.Mock;
+import org.junit.Test;
 
 public class DetachmentSystemTests extends AccelerationObserverTests {
 
@@ -21,6 +22,7 @@ public class DetachmentSystemTests extends AccelerationObserverTests {
 		return detachmentSystem;
 	}
 
+	@Test
 	public void testRespondsToDetachFailing() throws Exception {
 		DetachmentSystem detachmentSystem = new DetachmentSystem(parachute);
 		context.checking(new Expectations() {
