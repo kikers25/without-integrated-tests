@@ -1,5 +1,7 @@
 package com.mars.rover;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
 import org.jmock.Expectations;
@@ -34,11 +36,7 @@ public class ParachuteTests extends TestsWithMokingClasses {
 			}
 		});
 
-		try {
-			parachute.detach();
-		} catch (Exception e) {
-			fail();
-		}
+		parachute.detach();
 	}
 
 	@Test
@@ -53,8 +51,9 @@ public class ParachuteTests extends TestsWithMokingClasses {
 
 		try {
 			parachute.detach();
-			fail();
+			fail("No threw exception");
 		} catch (Exception e) {
+			assertThat(e.getMessage(), is("You broke the lander, idiot."));
 		}
 	}
 
