@@ -1,5 +1,7 @@
 package com.mars.rover;
 
+import static org.junit.Assert.fail;
+
 import org.jmock.Expectations;
 import org.jmock.auto.Mock;
 
@@ -17,6 +19,22 @@ public class DetachmentSystemTests extends AccelerationObserverTests {
 			}
 		});
 		return detachmentSystem;
+	}
+
+	public void testRespondsToDetachFailing() throws Exception {
+		DetachmentSystem detachmentSystem = new DetachmentSystem(parachute);
+		context.checking(new Expectations() {
+			{
+				allowing(parachute).detach();
+				will(throwException(new Exception()));
+			}
+		});
+
+		try {
+			detachmentSystem.handle_acceleration_report(-50);
+			fail("No threw exception");
+		} catch (Exception e) {
+		}
 	}
 
 }
