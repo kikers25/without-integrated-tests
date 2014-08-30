@@ -14,7 +14,7 @@ public class ParachuteTests extends TestsWithMokingClasses {
 	private Lander lander;
 
 	@Test
-	public void testOpenParachute() {
+	public void testOpenParachute() throws Exception {
 		Parachute parachute = new Parachute(lander);
 		context.checking(new Expectations() {
 
@@ -27,7 +27,7 @@ public class ParachuteTests extends TestsWithMokingClasses {
 	}
 
 	@Test
-	public void testDetachingWhileLanded() {
+	public void testDetachingWhileLanded() throws Exception {
 		Parachute parachute = new Parachute(lander);
 		context.checking(new Expectations() {
 			{

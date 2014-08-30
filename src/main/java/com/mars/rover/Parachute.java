@@ -8,12 +8,14 @@ public class Parachute {
 		this.lander = lander;
 	}
 
-	public void open() {
+	public void open() throws Exception {
 		lander.decelerate();
 	}
 
-	public void detach() {
-		lander.has_landed();
+	public void detach() throws Exception {
+		if (lander.has_landed() == false) {
+			throw new Exception("You broke the lander, idiot.");
+		}
 	}
 
 }

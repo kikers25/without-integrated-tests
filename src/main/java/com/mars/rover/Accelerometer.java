@@ -1,8 +1,7 @@
 package com.mars.rover;
 
-
 public class Accelerometer {
-	
+
 	private AccelerationObserver observer;
 
 	public void add_observer(AccelerationObserver observer) {
@@ -10,8 +9,8 @@ public class Accelerometer {
 		this.observer = observer;
 	}
 
-    public void report_acceleration(int acceleration) {
-    	observer.handle_acceleration_report(-50);
-    }
-	
+	public void report_acceleration(int acceleration) throws Exception {
+		observer.handle_acceleration_report(-50);
+	}
+
 }

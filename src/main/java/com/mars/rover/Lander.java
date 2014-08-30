@@ -8,7 +8,7 @@ public class Lander {
 		this.accelerometer = accelerometer;
 	}
 
-	public void decelerate() {
+	public void decelerate() throws Exception {
 		accelerometer.report_acceleration(-50);
 	}
 
