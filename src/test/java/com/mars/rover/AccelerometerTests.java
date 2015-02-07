@@ -4,17 +4,23 @@ import static org.junit.Assert.fail;
 
 import org.jmock.Expectations;
 import org.jmock.auto.Mock;
+import org.junit.Before;
 import org.junit.Test;
 
 public class AccelerometerTests extends TestsWithMokingClasses {
 
 	@Mock
 	private AccelerationObserver observer;
+	private Accelerometer accelerometer;
+
+	@Before
+	public void setup() {
+		accelerometer = new Accelerometer();
+		accelerometer.add_observer(observer);
+	}
 
 	@Test
 	public void testAccelerometerCanReportRapidAcceleration() throws Exception {
-		Accelerometer accelerometer = new Accelerometer();
-		accelerometer.add_observer(observer);
 		context.checking(new Expectations() {
 			{
 				oneOf(observer).handle_acceleration_report(-50);
@@ -27,8 +33,6 @@ public class AccelerometerTests extends TestsWithMokingClasses {
 	@Test
 	public void //
 	testAccelerometerCanRespondToFailureWhenReportingAcceleration() throws Exception {
-		Accelerometer accelerometer = new Accelerometer();
-		accelerometer.add_observer(observer);
 		context.checking(new Expectations() {
 			{
 				allowing(observer).handle_acceleration_report(-50);
