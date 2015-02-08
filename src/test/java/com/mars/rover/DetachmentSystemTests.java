@@ -15,10 +15,13 @@ public class DetachmentSystemTests extends AccelerationObserverTests {
 
 	@Override
 	protected AccelerationObserver create_acceleration_observer() throws Exception {
-		DetachmentSystem detachmentSystem = new DetachmentSystem(parachute);
+		DetachmentSystem detachmentSystem = new DetachmentSystem(parachute, altimeter);
 		context.checking(new Expectations() {
 			{
 				oneOf(parachute).detach();
+
+				allowing(altimeter).altitude();
+				will(returnValue(1));
 			}
 		});
 		return detachmentSystem;
@@ -26,11 +29,14 @@ public class DetachmentSystemTests extends AccelerationObserverTests {
 
 	@Test
 	public void testRespondsToDetachFailing() throws Exception {
-		DetachmentSystem detachmentSystem = new DetachmentSystem(parachute);
+		DetachmentSystem detachmentSystem = new DetachmentSystem(parachute, altimeter);
 		context.checking(new Expectations() {
 			{
 				allowing(parachute).detach();
 				will(throwException(new Exception()));
+
+				allowing(altimeter).altitude();
+				will(returnValue(1));
 			}
 		});
 
@@ -44,7 +50,7 @@ public class DetachmentSystemTests extends AccelerationObserverTests {
 	@Test
 	public void //
 	testDoNotDetachWhenTheLanderIsTooHighUp() throws Exception {
-		DetachmentSystem detachmentSystem = new DetachmentSystem(parachute);
+		DetachmentSystem detachmentSystem = new DetachmentSystem(parachute, altimeter);
 		context.checking(new Expectations() {
 			{
 				allowing(altimeter).altitude();
