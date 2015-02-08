@@ -10,6 +10,8 @@ public class DetachmentSystemTests extends AccelerationObserverTests {
 
 	@Mock
 	private Parachute parachute;
+	@Mock
+	Altimeter altimeter;
 
 	@Override
 	protected AccelerationObserver create_acceleration_observer() throws Exception {
@@ -39,4 +41,21 @@ public class DetachmentSystemTests extends AccelerationObserverTests {
 		}
 	}
 
+	@Test
+	public void //
+	testDoNotDetachWhenTheLanderIsTooHighUp() throws Exception {
+		DetachmentSystem detachmentSystem = new DetachmentSystem(parachute);
+		context.checking(new Expectations() {
+			{
+				allowing(altimeter).altitude();
+				will(returnValue(5));
+
+				never(parachute).detach();
+			}
+		});
+
+		detachmentSystem.handle_acceleration_report(-50);
+
+		// ???
+	}
 }
